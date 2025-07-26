@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+    <div class="top-bar">
+      <input type="text" id="taskInput" placeholder="Enter a new task" />
+      <div class="priority-selection">
+        <label><input type="radio" name="priority" value="high"> High</label>
+        <label><input type="radio" name="priority" value="medium" checked> Medium</label>
+        <label><input type="radio" name="priority" value="low"> Low</label>
+      </div>
+      <button id="addBtn">Add</button>
+    </div>
+
+    <ul id="taskList"></ul> 
+    <p id="emptyMsg">No tasks added yet.</p>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Edit Task</h2>
+      <input type="text" id="editTaskInput">
+      <div class="priority-selection">
+        <label><input type="radio" name="editPriority" value="high"> High</label>
+        <label><input type="radio" name="editPriority" value="medium"> Medium</label>
+        <label><input type="radio" name="editPriority" value="low"> Low</label>
+      </div>
+      <button id="saveEditBtn">Save Changes</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

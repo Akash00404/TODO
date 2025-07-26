@@ -1,0 +1,285 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  
+  .container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .top-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  #taskInput {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 150px;
+  }
+
+  .priority-selection {
+      display: flex;
+      gap: 10px;
+      margin-left: 10px;
+      flex-wrap: wrap;
+  }
+
+  .priority-selection label {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #555;
+      cursor: pointer;
+  }
+
+  .priority-selection input[type="radio"] {
+      margin-right: 5px;
+      accent-color: #007bff;
+  }
+  
+  #addBtn { 
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  
+  #addBtn:hover { 
+    background-color: #0056b3;
+  }
+  
+  
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  li.dragging {
+      opacity: 0.5;
+      border: 2px dashed #007bff;
+  }
+  
+  .task-left {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .task-left p {
+    margin: 0;
+  }
+  
+  .task-left .timestamp {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+  }
+
+  .task-priority {
+      display: inline-block;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      margin-left: 10px;
+      font-weight: bold;
+      background-color: #e0e0e0;
+      color: #555;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 0;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  
+  .actions button {
+    padding: 6px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+
+  .actions .edit {
+    background-color: #ffc107;
+    color: black;
+  }
+  
+
+  .delete-radio {
+      margin-right: 5px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #dc3545;
+  }
+  
+
+  
+  #emptyMsg {
+    text-align: center;
+    color: #777;
+    display: none;
+    padding: 30px;
+    font-style: italic;
+  }
+
+
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+  }
+
+  .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 80%;
+      max-width: 500px;
+      position: relative;
+      animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+  }
+
+  .modal-content h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+  }
+
+  #editTaskInput {
+      width: calc(100% - 24px);
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+  }
+
+  .modal .priority-selection {
+      justify-content: center;
+      margin-bottom: 20px;
+  }
+
+  #saveEditBtn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+  }
+
+  #saveEditBtn:hover {
+      background-color: #0056b3;
+  }
+
+  .close-button {
+      color: #aaa;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  @media (max-width: 480px) {
+      .top-bar {
+          flex-direction: column;
+          align-items: stretch;
+      }
+      #taskInput,
+      .priority-selection,
+      #addBtn {
+          width: 100%;
+          margin-left: 0;
+      }
+      .priority-selection {
+          justify-content: flex-start;
+          margin-bottom: 10px;
+      }
+      li {
+          flex-direction: column;
+          align-items: flex-start;
+      }
+      .actions {
+          width: 100%;
+          justify-content: flex-start;
+          margin-top: 10px;
+      }
+      .task-priority {
+          margin-left: 0;
+      }
+  }
