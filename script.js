@@ -1,4 +1,4 @@
-// --- Start of script.js execution ---
+
 console.log("script.js has started executing.");
 
 const taskInput = document.getElementById("taskInput");
@@ -6,23 +6,23 @@ const priorityRadios = document.querySelectorAll('.priority-selection input[name
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
 const emptyMsg = document.getElementById("emptyMsg");
-// Removed: const clearCompletedBtn = document.getElementById("clearCompletedBtn");
 
-// Modal elements
+
+
 const editModal = document.getElementById("editModal");
 const editTaskInput = document.getElementById("editTaskInput");
 const editPriorityRadios = document.querySelectorAll('.modal .priority-selection input[name="editPriority"]');
 const saveEditBtn = document.getElementById("saveEditBtn");
 const closeModalBtn = document.querySelector(".close-button");
 
-let tasks = []; // Initialized as empty array
+let tasks = []; 
 
 let currentEditIndex = -1;
 
-// Event listeners
+
 window.onload = loadTasks;
 addBtn.onclick = addTask;
-// Removed: clearCompletedBtn.onclick = clearCompletedTasks;
+
 closeModalBtn.onclick = () => {
     editModal.style.display = "none";
     console.log("Edit modal closed.");
@@ -35,12 +35,12 @@ window.onclick = (event) => {
 };
 saveEditBtn.onclick = saveEditedTask;
 
-// Drag and Drop variables
+
 let draggedItem = null;
 
 function loadTasks() {
   console.log("loadTasks() called. Current tasks array length:", tasks.length);
-  taskList.innerHTML = ""; // Clear existing tasks
+  taskList.innerHTML = ""; 
 
   if (tasks.length === 0) {
     emptyMsg.style.display = "block";
@@ -50,7 +50,7 @@ function loadTasks() {
     console.log(`Attempting to render ${tasks.length} tasks.`);
   }
 
-  // Removed: Check for hasCompletedTasks and clearCompletedBtn visibility
+ 
 
   tasks.forEach((task, index) => renderTask(task, index));
   console.log("loadTasks() finished.");
@@ -73,7 +73,7 @@ function addTask() {
 
   const newTask = {
     text,
-    // Removed: completed: false, // No 'completed' property anymore
+    
     timestamp: new Date().toLocaleString(),
     priority: selectedPriority
   };
@@ -95,10 +95,9 @@ function renderTask(task, index) {
   li.setAttribute("draggable", "true");
   li.dataset.index = index;
 
-  // Removed: if (task.completed) li.classList.add("completed");
-  // Removed: li.classList.add(task.priority); // No more priority class on the <li> itself for styling
+  
 
-  // Drag and drop event listeners
+  
   li.addEventListener("dragstart", handleDragStart);
   li.addEventListener("dragover", handleDragOver);
   li.addEventListener("dragleave", handleDragLeave);
@@ -127,7 +126,7 @@ function renderTask(task, index) {
   const actions = document.createElement("div");
   actions.className = "actions";
 
-  // Removed: completeBtn creation and appending
+  
 
   const editBtn = document.createElement("button");
   editBtn.className = "edit";
@@ -147,9 +146,7 @@ function renderTask(task, index) {
     }
   };
 
-  // Removed: deleteBtn creation and appending
-
-  // Only edit button and delete radio button are appended
+  
   actions.appendChild(editBtn);
   actions.appendChild(deleteRadio);
 
@@ -159,7 +156,7 @@ function renderTask(task, index) {
   console.log(`Task ${index} (${task.text}) successfully appended to taskList.`);
 }
 
-// Removed: toggleComplete function
+
 
 function openEditModal(index) {
   currentEditIndex = index;
@@ -210,9 +207,7 @@ function deleteTask(index) {
   }
 }
 
-// Removed: clearCompletedTasks function (and its call from event listeners)
 
-// Drag and Drop Functions (remain unchanged)
 function handleDragStart(e) {
   draggedItem = this;
   e.dataTransfer.effectAllowed = "move";
